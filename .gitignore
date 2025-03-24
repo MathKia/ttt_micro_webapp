@@ -1,0 +1,37 @@
+# Ignore dependencies
+node_modules/
+
+# Ignore build files (React, Webpack, or Vite)
+dist/
+build/
+
+# Ignore environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+npm-debug.log
+yarn-error.log
+logs/
+
+# Ignore cache & coverage files
+.cache/
+coverage/
+
+# Ignore Python files (if applicable)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+
+# Ignore VS Code settings
+.vscode/

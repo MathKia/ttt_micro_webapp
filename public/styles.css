@@ -1,0 +1,636 @@
+/******************** full html page ***********************/
+
+/* body */
+body {
+  padding-top: 60px; /* Adjust based on navbar height */
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0d0635, #3e1f92, #7a4ed9);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 5%;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 12px;
+  z-index: 1000;
+
+}
+
+/******************** header ********************** : color & text */   
+header {
+  position: fixed;
+  background-color: #d3a440; /* Gold theme */
+  box-shadow: 0px 4px 10px rgba(233, 186, 31, 0.637);
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100px; /* Adjusted for content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content */
+  align-items: center;
+  z-index: 1000; /* Ensures it stays on top */
+  padding: 10px 0; /* Reduced padding */
+}
+
+header.font {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center items inside */
+  align-items: center;
+  width: 100%;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4), 
+              -2px -2px 5px rgba(167, 142, 3, 0.6); /* Embossed effect */
+}
+
+/* h1 */
+header h1 {
+  font-size: 50px;
+  margin: 0; /* Remove default margin */
+}
+
+/* h2 */
+header h2 {
+  font-size: 25px;
+  margin: 0; /* Remove default margin */
+}
+
+/******************** login ***********************/
+
+/* form */
+.login form {
+  background-color: #ebe9facb;
+  margin-top: 130px;
+  padding: 5rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(233, 186, 31, 0.637);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+  max-width: 90%;
+}
+
+/* button (login/sign up)*/
+.login button {
+  width: 50%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login button:first-of-type {
+  background: #d3a440;
+  color: white;
+  font-weight: bold;  /* First button style */
+}
+
+.login button:first-of-type:hover {
+  background: #675ad8;
+  transition: background 0.3s ease-in-out;
+}
+
+.login button:last-of-type {
+  background: #120649;
+  color: white;
+  font-weight: bold;  /* Second button style */
+}
+
+.login button:last-of-type:hover {
+  background: #ccc054;
+  transition: background 0.3s ease-in-out;
+}
+
+/* input */
+.login input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.login input:focus {
+  border-color: #aa810e;
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(161, 148, 25, 0.5);
+}
+
+/* h2 */
+.login h2{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/******************** join room ***********************/
+
+.join-room {
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 100%; /* Full width */
+  height: 100vh; /* Full viewport height */
+  margin-top: 100px;
+}
+
+
+/* input */
+.join-room input {
+  width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.join-room input:focus {
+  border-color: #aa810e;
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(161, 148, 25, 0.5);
+}
+
+/* h2 */
+.join-room h2{
+  font-weight: bold;
+  font-size: 17px;
+}
+
+/* button to join */
+.join-room button {
+  width: 50%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+} 
+
+.join-room button:first-of-type {
+  margin-top: 20px;
+  background: #d3a440;
+  color: white;
+  font-weight: bold;  /* First button style */
+}
+
+.join-room button:first-of-type:hover {
+  background: #675ad8;
+  transition: background 0.3s ease-in-out;
+}
+
+.join-room button:last-of-type {
+  margin-top: 10px;
+  background: #120649;
+  color: white;
+  font-weight: bold;  /* logout button style */
+}
+
+.join-room button:last-of-type:hover {
+  background: #ccc054;
+  transition: background 0.3s ease-in-out;
+}
+
+
+/******************** game grid ***********************/
+
+/* grid container */
+.grid-container {
+  position: fixed;  
+  top: 140px;  /* Push it below the header (header height + some space) */
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
+  gap: 10px;
+  max-width: 100%;
+}
+
+.grid-menu {
+  position: fixed;
+  top: 140px; /* Align with grid-container */
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  gap: 10px;
+  padding: 15px;
+}
+
+/*  grid-menu h2? */
+.grid-menu h2{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/*  grid menu buttons */
+.grid-menu button {
+  width: 50%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+} 
+
+.grid-menu button:first-of-type {
+  margin-top: 20px;
+  background: #d3a440;
+  color: white;
+  font-weight: bold;  /*  button (rematch) */
+}
+
+.grid-menu button:first-of-type:hover {
+  background: #675ad8;
+  transition: background 0.3s ease-in-out;
+}
+
+.grid-menu button:last-of-type {
+  margin-top: 10px;
+  background: #250f86;
+  color: white;
+  font-weight: bold;  /*  button (exit) */
+}
+
+.grid-menu button:last-of-type:hover {
+  background: #ccc054;
+  transition: background 0.3s ease-in-out;
+}
+
+/******************** buttons in actual grid ***********************/
+
+/*  grid button  */
+.grid-button {
+  background: #d8d4c8;
+  border: 2px solid #6e5f07;
+  border-radius: 5px;
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.grid-button.x{
+  color: #0f092b;
+  background-color: gold;
+}
+
+.grid-button.o{
+  color: gold;
+  background-color: #0f092b;
+}
+
+.grid-button.win{
+  background-color: green;
+  color: white;
+}
+
+.grid-button:not(.x):not(.o):not(.win):hover {
+  background: rgba(143, 182, 143, 0.938);
+}
+
+/******************** chat ***********************/
+
+/* chat container - scroll */
+.chat-container {
+  position: fixed;
+  right: 0;
+  top: 0; /* Align to the top */
+  height: 100vh; /* Full screen height */
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* chat message */
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* chat-bubble */
+.chat-bubble {
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 80%;
+  white-space: normal;
+}
+
+  /* Sent (own message) */
+.chat-bubble.sent {
+  background: blue;
+  color: white;
+  align-self: flex-end; /* Align to the right */
+  margin-left: auto; /* Push message to the right */
+}
+
+/* Received (other user's message) */
+.chat-bubble.received {
+  background: white;
+  color: black;
+  align-self: flex-start; /* Align to the left */
+  margin-right: auto; /* Push message to the left */
+}
+
+/*  chat time */
+.chat-time {
+  font-size: 0.4em;
+}
+
+/* chat input - text area */
+.chat-input {
+  background: #270f69;
+  color: #aa810e;
+  padding: 8px;
+  border: 1px solid #aa810e;
+  box-shadow: 0px 4px 10px rgba(233, 186, 31, 0.637);
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: auto;  /* Pushes the input down */
+  margin-bottom: 25px; /* Positions it 200px above the bottom */
+}
+
+.chat-input textarea {
+  width: 95%;
+  min-height: 25px;  /* Start small */
+  max-height: 60px; /* Prevent infinite growth */
+  resize: none; /* Prevent manual resizing */
+  overflow-y: auto; /* Enables scrolling when text exceeds max height */
+}
+
+/* chat input - button */
+.chat-input button {
+  width: 50%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+} 
+
+.chat-input button:first-of-type {
+  margin-top: 20px;
+  background: #d3a440;
+  color: white;
+  font-weight: bold;  /*  button (rematch) */
+}
+
+.chat-input button:first-of-type:hover {
+  background: #675ad8;
+  transition: background 0.3s ease-in-out;
+}
+
+/**************************     responsiveness    ******************************/
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  /* header */
+  header {
+      min-height: 70px;
+      padding: 5px 0;
+  }
+  header h1 {
+      font-size: 40px;
+  }
+  header h2 {
+      font-size: 20px;
+  }
+
+  /* login */
+  .login form {
+      margin-top: 100px;
+      padding: 2.5rem;
+      width: 90%;
+  }
+
+  .login button {
+      width: 80%;
+  }
+
+  .login input {
+      font-size: 16px;
+      padding: 8px;
+  }
+
+  .login h2 {
+      font-size: 14px;
+  }
+
+  /* join room */
+  .join-room {
+      margin-top: 50px;
+      height: auto; /* Allow content to adjust dynamically */
+      padding: 20px;
+  }
+
+  .join-room input {
+      width: 80%;
+      font-size: 18px;
+      padding: 8px;
+  }
+
+  .join-room button {
+      width: 80%;
+  }
+
+  .join-room h2 {
+      font-size: 16px;
+  }
+
+  /* game grid tings */
+  .grid-container {
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      top: 120px;
+  }
+
+  .grid-button {
+      width: 100px;
+      height: 100px;
+      font-size: 60px;
+  }
+
+  .grid-menu {
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      width: 90%;
+      flex-direction: row;
+      justify-content: center;
+  }
+
+  .grid-menu button {
+      width: 40%;
+  }
+
+  /* chat tings */
+  .chat-container {
+      width: 200px;
+  }
+
+  .chat-bubble {
+      font-size: 14px;
+      padding: 6px 10px;
+  }
+
+  .chat-input textarea {
+      font-size: 12px;
+      min-height: 20px;
+      max-height: 50px;
+  }
+
+  .chat-input button {
+      width: 100%;
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* header */
+  header {
+      min-height: 60px;
+      padding: 5px;
+  }
+  header h1 {
+      font-size: 35px;
+  }
+  header h2 {
+      font-size: 18px;
+  }
+
+  /* login */
+  .login form {
+      margin-top: 100px;
+      padding: 2.5rem;
+      width: 90%;
+  }
+
+  .login button {
+      width: 80%;
+  }
+
+  .login input {
+      font-size: 16px;
+      padding: 8px;
+  }
+
+  .login h2 {
+      font-size: 14px;
+  }
+
+  /* join room */
+  .join-room {
+      margin-top: 30px;
+      padding: 15px;
+  }
+
+  .join-room input {
+      width: 100%;
+      font-size: 16px;
+      padding: 6px;
+  }
+
+  .join-room button {
+      width: 100%;
+      padding: 12px;
+  }
+
+  .join-room h2 {
+      font-size: 14px;
+  }
+
+  /* game grid tings */
+  .grid-container {
+      grid-template-columns: repeat(3, 80px);
+      grid-template-rows: repeat(3, 80px);
+      top: 100px;
+  }
+
+  .grid-button {
+      width: 80px;
+      height: 80px;
+      font-size: 50px;
+  }
+
+  .grid-menu {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .grid-menu button {
+      width: 80%;
+  }
+
+  /* chat tings */
+  .chat-container {
+      width: 100%;
+      height: 40vh; /* Only take up 40% of screen */
+      bottom: 0;
+      top: auto;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9); /* Semi-transparent */
+  }
+
+  .chat-messages {
+      max-height: 60%;
+  }
+
+  .chat-input {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .chat-input textarea {
+      width: 90%;
+      min-height: 30px;
+      max-height: 50px;
+  }
+
+  .chat-input button {
+      width: 100%;
+      font-size: 12px;
+  }
+}
