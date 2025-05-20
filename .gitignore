@@ -1,6 +1,12 @@
 # Ignore dependencies
 node_modules/
 
+# Ignore all components in src/components/
+src/components/
+
+# But keep componentsMicroservs
+!src/componentsMicroservs/
+
 # Ignore build files (React, Webpack, or Vite)
 dist/
 build/

@@ -66,6 +66,48 @@ header h2 {
   margin: 0; /* Remove default margin */
 }
 
+/******************** menu (vs PC or vs Online) ***********************/
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Space between buttons */
+}
+
+.menu button {
+  flex: 1; /* Equal size for each button */
+  padding: 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu button:first-of-type {
+  background: #d3a440;
+  color: white;
+  font-weight: bold;  /* First button style */
+}
+
+.menu button:first-of-type:hover {
+  background: #675ad8;
+  transition: background 0.3s ease-in-out;
+}
+
+.menu button:last-of-type {
+  background: #120649;
+  color: white;
+  font-weight: bold;  /* Second button style */
+}
+
+.menu button:last-of-type:hover {
+  background: #ccc054;
+  transition: background 0.3s ease-in-out;
+}
+
+
 /******************** login ***********************/
 
 /* form */
@@ -96,24 +138,35 @@ header h2 {
   transition: 0.3s;
 }
 
-.login button:first-of-type {
+.login button:nth-of-type(1) {
   background: #d3a440;
   color: white;
-  font-weight: bold;  /* First button style */
+  font-weight: bold;
 }
 
-.login button:first-of-type:hover {
+.login button:nth-of-type(1):hover {
   background: #675ad8;
   transition: background 0.3s ease-in-out;
 }
 
-.login button:last-of-type {
-  background: #120649;
+.login button:nth-of-type(2) {
+  background: #741ea7; /* Complementary color */
   color: white;
-  font-weight: bold;  /* Second button style */
+  font-weight: bold;
 }
 
-.login button:last-of-type:hover {
+.login button:nth-of-type(2):hover {
+  background: #3b2564; /* Darker shade for hover */
+  transition: background 0.3s ease-in-out;
+}
+
+.login button:nth-of-type(3) {
+  background: #120649;
+  color: white;
+  font-weight: bold;
+}
+
+.login button:nth-of-type(3):hover {
   background: #ccc054;
   transition: background 0.3s ease-in-out;
 }
@@ -189,26 +242,38 @@ header h2 {
   text-align: center;
 } 
 
-.join-room button:first-of-type {
+.join-room button:nth-of-type(1) {
   margin-top: 20px;
   background: #d3a440;
   color: white;
-  font-weight: bold;  /* First button style */
+  font-weight: bold;
 }
 
-.join-room button:first-of-type:hover {
+.join-room button:nth-of-type(1):hover {
   background: #675ad8;
   transition: background 0.3s ease-in-out;
 }
 
-.join-room button:last-of-type {
+.join-room button:nth-of-type(2) {
+  margin-top: 15px;
+  background: #741ea7; /* Complementary color */
+  color: white;
+  font-weight: bold;
+}
+
+.join-room button:nth-of-type(2):hover {
+  background: #3b2564; /* Darker shade for hover */
+  transition: background 0.3s ease-in-out;
+}
+
+.join-room button:nth-of-type(3) {
   margin-top: 10px;
   background: #120649;
   color: white;
-  font-weight: bold;  /* logout button style */
+  font-weight: bold;
 }
 
-.join-room button:last-of-type:hover {
+.join-room button:nth-of-type(3):hover {
   background: #ccc054;
   transition: background 0.3s ease-in-out;
 }
@@ -437,45 +502,58 @@ header h2 {
       font-size: 20px;
   }
 
+  /* menu */
+  .menu {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .menu button {
+    padding: 15px;
+    font-size: 18px;
+  }
+
   /* login */
   .login form {
-      margin-top: 100px;
-      padding: 2.5rem;
-      width: 90%;
+    padding: 3rem;
+    width: 80%;
+    max-width: 400px;
   }
 
   .login button {
-      width: 80%;
+    width: 70%;
+    padding: 12px;
+    font-size: 18px;
   }
 
   .login input {
-      font-size: 16px;
-      padding: 8px;
+    font-size: 18px;
+    padding: 8px;
   }
 
   .login h2 {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   /* join room */
   .join-room {
-      margin-top: 50px;
-      height: auto; /* Allow content to adjust dynamically */
-      padding: 20px;
+    margin-top: 80px;
   }
 
   .join-room input {
-      width: 80%;
-      font-size: 18px;
-      padding: 8px;
+    width: 80%;
+    font-size: 18px;
+    padding: 8px;
   }
 
   .join-room button {
-      width: 80%;
+    width: 60%;
+    padding: 12px;
+    font-size: 18px;
   }
 
   .join-room h2 {
-      font-size: 16px;
+    font-size: 15px;
   }
 
   /* game grid tings */
@@ -540,45 +618,60 @@ header h2 {
       font-size: 18px;
   }
 
+  /* menu */
+  .menu {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .menu button {
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+
   /* login */
   .login form {
-      margin-top: 100px;
-      padding: 2.5rem;
-      width: 90%;
+    padding: 2rem;
+    margin-top: 80px;
+    width: 90%;
+    max-width: 300px;
   }
 
   .login button {
-      width: 80%;
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
   }
 
   .login input {
-      font-size: 16px;
-      padding: 8px;
+    font-size: 16px;
+    padding: 6px;
   }
 
   .login h2 {
-      font-size: 14px;
+    font-size: 12px;
   }
 
   /* join room */
   .join-room {
-      margin-top: 30px;
-      padding: 15px;
+    margin-top: 50px;
   }
 
   .join-room input {
-      width: 100%;
-      font-size: 16px;
-      padding: 6px;
+    width: 90%;
+    font-size: 16px;
+    padding: 6px;
   }
 
   .join-room button {
-      width: 100%;
-      padding: 12px;
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
   }
 
   .join-room h2 {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   /* game grid tings */
