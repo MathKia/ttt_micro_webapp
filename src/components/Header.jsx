@@ -1,4 +1,4 @@
-function Header({endState, mark, username, players, turn}){
+function Header({endState, mark, username, players, turn, playComputer, turnMessage, winMessage}){
     return(
         <>
         <header className="font">
@@ -7,16 +7,20 @@ function Header({endState, mark, username, players, turn}){
         ? `${players[0]} vs ${players[1]}` 
         : username 
         ? `Welcome ${username}!` 
-        : "Tic Tac Toe Online!"}
+        : "Tic Tac Toe!"}
         </h1>
+
         <h2>
-        {endState 
-        ? endState 
-        : mark !== "" 
-        ? turn 
-        ? `You're ${mark} - Your turn` 
-        : `You're ${mark} - Opponent's turn` 
-        : ""}
+        {playComputer 
+         ? (endState ? winMessage : turnMessage) 
+         : (endState 
+            ? endState 
+            : mark !== "" 
+            ? (turn 
+              ? `You're ${mark} - Your turn` 
+              : `You're ${mark} - Opponent's turn`) 
+              : "")
+              }
         </h2>
         </header>
         </>

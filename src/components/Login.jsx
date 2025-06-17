@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// CONNECT TO LOCAL MICROSERVICES API ENDPOINTS
+// API FOR GATEWAY LOGIN = 
+const auth_APIGW_baseURL = import.meta.env.VITE_REACT_APP_AUTH_API_BASE_URL // + /endpoint
 
-// const URL = "https://api.kiaramathuraportfolio.com/api/auth"
-const URL = "https://api.kiaramathuraportfolio.com/api/auth"
-
-function Login({setLoggedIn, setUsername}){
+function Login({setLoggedIn, setUsername, handleSuccessfulLogin, returnToMenu}){
 
     //username const
     const [localUsername, setLocalUsername] = useState("")
@@ -37,18 +37,20 @@ function Login({setLoggedIn, setUsername}){
         else{
             try{
                 console.log("Login - handleLogin(): trying to make post request to login route")
-                const response = await axios.post(`${URL}/login?mode=browser`, {
+                const response = await axios.post(`${auth_APIGW_baseURL}/login`, {
                     username: localUsername,
                     password
                 },
-                {withCredentials: true}
+                {   params: { mode: 'browser' },
+                    withCredentials: true
+                }
                 )
                 var result = response.data //response from backend
-                alert(result.message)
                 console.log("Login - handleLogin():", result)
                 if(result.success){
                     setLoggedIn(true)
                     setUsername(localUsername)
+                    handleSuccessfulLogin()
                     console.log(`Logged in as ${localUsername} `,result.message)
                 }   
                 else{
@@ -79,15 +81,20 @@ function Login({setLoggedIn, setUsername}){
         }
         else{
             try{
-                const response = await axios.post(`${URL}/signup?mode=browser`, {
+                const response = await axios.post(`${auth_APIGW_baseURL}/signup`, {
                     username: localUsername,
                     password
-                })
+                },
+                {   params: { mode: 'browser' },
+                    withCredentials: true
+                }
+                )
                 var result = response.data //response from backend
                 alert(result.message)
                 if(result.success){
                     setLoggedIn(true)
                     setUsername(localUsername)
+                    handleSuccessfulLogin()
                     console.log(`Logged in as ${localUsername} `,result.message)
                 }   
                 else{
@@ -128,7 +135,7 @@ function Login({setLoggedIn, setUsername}){
               autoComplete="off"
             />
             <input
-              type="password"
+              type="text"
               placeholder="Password"
               value={password}
               onChange={(event) => setPassword(event.target.value)
@@ -138,6 +145,7 @@ function Login({setLoggedIn, setUsername}){
             {defaultMenu ? <button onClick={handleLogin}>Login</button> : <button onClick={handleSignUp}>Sign Up</button>}
             {statusText && <h2 style={{color:statusColor}}>{statusText}</h2>}
             <button onClick={switchMenu}>{defaultMenu? "Sign Up Instead" : "Login Instead"}</button>
+            <button onClick={returnToMenu}>Return To Menu</button>
           </form>
         </div>
     );

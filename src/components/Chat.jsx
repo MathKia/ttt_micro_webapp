@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef} from "react"
 
-function Chat({socket, roomNumber, username}) {
+function Chat({chatSocket, roomNumber, username}) {
 
   const [message, setMessage] = useState("")
   const [messageHistory, setMessageHistory] = useState([])
@@ -9,7 +9,7 @@ function Chat({socket, roomNumber, username}) {
 
   function sendMessage (){
     if (message.trim() !== "") {
-      socket.emit("send_message", {message: message, room: roomNumber});
+      chatSocket.emit("send_message", {message: message, room: roomNumber});
       setMessage(""); // Clear input after sending
     }
   }
@@ -20,18 +20,27 @@ function Chat({socket, roomNumber, username}) {
   }
 
   useEffect(() => {
-    console.log("Setting up listener...");
-    socket.on("updated_messages", (data) => {
+    if (!chatSocket) return;
+
+    console.log(`chat listener set up`)
+
+    chatSocket.on('room_data', (data)=>{
+      console.log(`chat service emitted room data event`)
+      console.log(data.message)
+    })
+
+    chatSocket.on("updated_messages", (data) => {
       setMessageHistory((prevMessages) => [...prevMessages, data[data.length - 1]]); // Append only the new message
       console.log("Received:", data[data.length - 1]);
     });
 
-  
     return () => {
-      console.log("Removing listener...");
-      socket.off("updated_messages");  // ✅ Prevents duplicate listeners
+      console.log("cleaning up chat listener...");
+      chatSocket.off("room_data"); 
+      chatSocket.off("updated_messages");  // ✅ Prevents duplicate listeners
     };
-  }, []);
+  }, [chatSocket]);
+
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -44,7 +53,7 @@ function Chat({socket, roomNumber, username}) {
       {messageHistory.map((msg, index) => {
         const [user, text, time] = msg;
         const isSender = user == username; // Check if message is from the logged-in user
-        console.log(`is sender of message = ${isSender}, user = ${user}, username = ${username}`)
+
         return (
           <div 
             key={index} 
@@ -64,7 +73,7 @@ function Chat({socket, roomNumber, username}) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onInput={autoExpand} 
-          maxLength={maxChars}  // Limits input to 200 characters
+          maxLength={maxChars}  // Limits input to 150 characters
         />
         <p>{message.length}/{maxChars}</p> {/* Show counter */}
         <button onClick={sendMessage}>Send</button>

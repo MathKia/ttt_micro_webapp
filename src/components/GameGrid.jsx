@@ -13,7 +13,7 @@ function GameGrid({
   exit, 
   rematchState, 
   full, 
-  socket, 
+  chatSocket, 
   room,
   username 
 }) 
@@ -33,12 +33,12 @@ function GameGrid({
         ))}
       </div>
       
-      <Chat socket={socket} roomNumber={room} username={username}/>
+      <Chat chatSocket={chatSocket} roomNumber={room} username={username}/>
 
       <div className="grid-menu">
         {isFinished && (
           <>
-            <button onClick={rematch}>Rematch</button>
+            <button onClick={rematch} disabled={!full}>Rematch</button>
             <h2>{rematchState}</h2>
           </>
         )}

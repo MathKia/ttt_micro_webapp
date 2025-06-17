@@ -116,7 +116,7 @@ header h2 {
   margin-top: 130px;
   padding: 5rem;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(233, 186, 31, 0.637);
+  box-shadow: 0px 4px 10px rgba(233, 186, 31, 0.635);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,8 +230,71 @@ header h2 {
   font-size: 17px;
 }
 
+.join-room .info-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Higher to stay above any headers */
+}
+
+.join-room .info-box {
+  background-color: #242323;
+  border: 3px solid white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 90vh;
+  padding: 20px 20px 50px 20px; /* bottom padding for button */
+  overflow-y: auto;
+  position: relative;
+  color: white;
+  font-family: sans-serif;
+}
+
+
+.join-room .info-text {
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.join-room .info-exit-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #8B0000;
+  border: 3px solid white;
+  border-radius: 8px;
+  color: white;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.join-room .info-help-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  align-self: flex-end; /* Align right under input */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
 /* button to join */
-.join-room button {
+.join-room button.join-btn {
   width: 50%;
   padding: 15px;
   border: none;
@@ -240,44 +303,40 @@ header h2 {
   cursor: pointer;
   transition: 0.3s;
   text-align: center;
-} 
+}
 
-.join-room button:nth-of-type(1) {
+.join-room button.btn1 {
   margin-top: 20px;
   background: #d3a440;
   color: white;
   font-weight: bold;
 }
 
-.join-room button:nth-of-type(1):hover {
+.join-room button.btn1:hover {
   background: #675ad8;
-  transition: background 0.3s ease-in-out;
 }
 
-.join-room button:nth-of-type(2) {
+.join-room button.btn2 {
   margin-top: 15px;
-  background: #741ea7; /* Complementary color */
+  background: #741ea7;
   color: white;
   font-weight: bold;
 }
 
-.join-room button:nth-of-type(2):hover {
-  background: #3b2564; /* Darker shade for hover */
-  transition: background 0.3s ease-in-out;
+.join-room button.btn2:hover {
+  background: #3b2564;
 }
 
-.join-room button:nth-of-type(3) {
+.join-room button.btn3 {
   margin-top: 10px;
   background: #120649;
   color: white;
   font-weight: bold;
 }
 
-.join-room button:nth-of-type(3):hover {
+.join-room button.btn3:hover {
   background: #ccc054;
-  transition: background 0.3s ease-in-out;
 }
-
 
 /******************** game grid ***********************/
 
@@ -536,24 +595,30 @@ header h2 {
   }
 
   /* join room */
-  .join-room {
-    margin-top: 80px;
-  }
-
-  .join-room input {
+.join-room input {
     width: 80%;
     font-size: 18px;
-    padding: 8px;
   }
 
-  .join-room button {
-    width: 60%;
-    padding: 12px;
-    font-size: 18px;
-  }
-
-  .join-room h2 {
+  .join-room button.join-btn {
+    width: 70%;
     font-size: 15px;
+    padding: 12px;
+  }
+
+  .join-room .info-box {
+    width: 95%;
+    max-width: 350px;
+    padding: 15px 15px 40px 15px;
+  }
+
+  .join-room .info-exit-button {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+
+  .join-room .info-text {
+    font-size: 13px;
   }
 
   /* game grid tings */
@@ -654,24 +719,41 @@ header h2 {
   }
 
   /* join room */
-  .join-room {
-    margin-top: 50px;
-  }
-
   .join-room input {
     width: 90%;
     font-size: 16px;
-    padding: 6px;
   }
 
-  .join-room button {
-    width: 70%;
+  .join-room button.join-btn {
+    width: 90%;
+    font-size: 14px;
     padding: 10px;
-    font-size: 16px;
   }
 
   .join-room h2 {
-    font-size: 14px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .join-room .info-box {
+    width: 95%;
+    max-width: 90%;
+    padding: 10px 10px 35px 10px;
+  }
+
+  .join-room .info-exit-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .join-room .info-text {
+    font-size: 12px;
+  }
+
+  .join-room .info-help-button {
+    font-size: 11px;
+    padding: 4px 8px;
+    margin-right: 10px;
   }
 
   /* game grid tings */
